@@ -1,5 +1,8 @@
 package ge.tbc.testautomation;
 
+import ge.tbc.testautomation.polymorphismInheritance_L5.*;
+import ge.tbc.testautomation.staticMembersAndEncapsulation_L4.Building;
+
 public class Main {
     public static void main(String[] args) {
 //        Building building = new Building();
@@ -20,5 +23,27 @@ public class Main {
         System.out.println(Building.numberOfBuildings);
 
         System.out.println(building5);
+
+        MethodOverloading methodOverloading = new MethodOverloading();
+
+        Ball ball = methodOverloading.shoot(new Ball());
+        methodOverloading.shoot(new Ball());
+
+        Object object = new Object();
+        Shape shape = new Shape();
+        Shape shape1 = new Rectangle(2, 10);
+        Rectangle rectangle = new Rectangle(1, 2);
+
+        int statusCode = 400;
+
+        Response response; // DECLARATION/REFERENCE
+
+        if (statusCode >= 400 && statusCode < 500){
+//        if (String.valueOf(statusCode).startsWith("4")){
+            response = new NegativeResponse(); // LATE INITIALIZATION
+        } else if (statusCode == 200) {
+            response = new PositiveResponse();
+
+        }
     }
 }

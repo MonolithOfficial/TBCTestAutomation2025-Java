@@ -1,4 +1,4 @@
-package ge.tbc.testautomation;
+package ge.tbc.testautomation.staticMembersAndEncapsulation_L4;
 
 public class Building {
     private final Integer MAX_NUMBER_OF_FLOORS = 10;
