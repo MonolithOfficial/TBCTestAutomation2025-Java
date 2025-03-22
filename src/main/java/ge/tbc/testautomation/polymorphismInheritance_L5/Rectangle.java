@@ -18,4 +18,8 @@ public class Rectangle extends Shape {
     public double getArea() {
         return sideA * sideB;
     }
+
+    public void somethingRectangle(){
+        System.out.println("something");
+    }
 }
