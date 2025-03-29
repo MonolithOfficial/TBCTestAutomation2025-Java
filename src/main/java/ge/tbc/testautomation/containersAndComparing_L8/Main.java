@@ -1,6 +1,8 @@
 package ge.tbc.testautomation.containersAndComparing_L8;
 
+import ge.tbc.testautomation.generics_L9.Tuple;
 import ge.tbc.testautomation.polymorphismInheritance_L5.Rectangle;
+import ge.tbc.testautomation.polymorphismInheritance_L5.Shape;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -12,13 +14,20 @@ public class Main {
         String something = new String();
         Rectangle[] rectangles = new Rectangle[10];
 
-        Collection collection = new ArrayList();
-        collection.add(10);
-        collection.add(15);
-        collection.remove(10);
-        collection.remove(20);
+        Collection<Rectangle> collection = new ArrayList<Rectangle>();
+        collection.add(new Rectangle(10, 10));
+//        collection.remove(10);
+//        collection.remove(20);
 
-        Collection collection2 = new ArrayList();
+        for (Object element :
+                collection) {
+            if (element instanceof String){
+                String stringAsElement = (String) element;
+                System.out.println(stringAsElement);
+            }
+        }
+
+        Collection<Integer> collection2 = new ArrayList<>();
         collection2.add(100);
         collection2.add(200);
         collection2.remove(10);
@@ -26,27 +35,26 @@ public class Main {
 
         System.out.println(collection.size());
 
-        collection.addAll(collection2);
+//        collection.addAll(collection2); NOT POSSIBLE ANYMORE
         System.out.println(collection);
 
-        Iterator iterator = collection.iterator();
+        Iterator<Rectangle> iterator = collection.iterator();
         while(iterator.hasNext()){
-            Object currentElement = iterator.next();
+            Rectangle currentElement = iterator.next();
             System.out.println(currentElement);
 
             iterator.remove();
         }
 
-        HashMap map = new HashMap();
+        HashMap<String, String> map = new HashMap<>();
         int x = 10;
         map.put("ობსტრუქცია", "სხდომის, კრების, ვისიმე გამოსვლის ჩაშლა წამოძახილებით, ხმაურით, გრძელი, უსაგნო სიტყვის წარმოთქმით და მისთ.");
-        map.put("ობსტრუქცია1", x);
-        map.put(new Rectangle(10, 10), 10);
-        map.keySet();
+        map.put("ობსტრუქცია1", "something");
+        Set<String> keySet = map.keySet();
 
         System.out.println(map);
 
-        LinkedHashMap linkedMap = new LinkedHashMap();
+        LinkedHashMap<String, String> linkedMap = new LinkedHashMap<>();
         linkedMap.put("ben1", "1");
         linkedMap.put("ben2", "2");
         linkedMap.put("ben3", "3");
@@ -58,7 +66,7 @@ public class Main {
         linkedMap.put("ben9", "9");
         linkedMap.put("ben10", "10");
 
-        HashMap hashMap = new HashMap();
+        HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("ben1", "1");
         hashMap.put("ben2", "2");
         hashMap.put("ben3", "3");
@@ -70,19 +78,22 @@ public class Main {
         hashMap.put("ben9", "9");
         hashMap.put("ben10", "10");
 
+        HashMap<Shape, String> shapeMap = new HashMap<>();
+        shapeMap.put(new Rectangle(10, 10), "something");
+
         hashMap.remove("ben10");
 
-        for (Object key :
+        for (String key :
                 linkedMap.keySet()) {
             System.out.println(linkedMap.get(key));
         }
 
-        for (Object key :
+        for (String key :
                 hashMap.keySet()) {
             System.out.println(hashMap.get(key));
         }
 
-        HashSet someSet = new HashSet();
+        HashSet<Rectangle> someSet = new HashSet<>();
         someSet.add(new Rectangle(10, 10));
         someSet.add(new Rectangle(10, 10));
         someSet.add(new Rectangle(10, 10));
@@ -90,7 +101,7 @@ public class Main {
         someSet.add(new Rectangle(10, 10));
         someSet.add(new Rectangle(10, 10));
 
-        TreeSet treeSet = new TreeSet(new RectangleComparator()); // using comparator
+        TreeSet<Rectangle> treeSet = new TreeSet<Rectangle>(new RectangleComparator()); // using comparator
 //        TreeSet treeSet = new TreeSet(); // using comparable
         treeSet.add(new Rectangle(20, 20)); // ONLY THIS REMAINS
         treeSet.add(new Rectangle(20, 20));
@@ -100,7 +111,7 @@ public class Main {
 
         System.out.println("TREESET" + treeSet);
 
-        TreeMap treeMap = new TreeMap(new RectangleComparator());
+        TreeMap<Rectangle, String> treeMap = new TreeMap<Rectangle, String>(new RectangleComparator());
         treeMap.put(new Rectangle(10, 19), "1");
         treeMap.put(new Rectangle(10, 19), "2");
         treeMap.put(new Rectangle(10, 19), "3");
@@ -114,7 +125,7 @@ public class Main {
 
         System.out.println(treeMap.size());
 
-        ArrayList arrayList = new ArrayList(); // using comparator
+        ArrayList<Rectangle> arrayList = new ArrayList<>(); // using comparator
         arrayList.add(new Rectangle(25, 20));
         arrayList.add(new Rectangle(21, 20));
         arrayList.add(new Rectangle(30, 20));
@@ -123,5 +134,17 @@ public class Main {
         System.out.println(arrayList);
         Collections.sort(arrayList, new RectangleComparator());
         System.out.println(arrayList);
+
+        Tuple<Long, String> identificationInfoTuple = new Tuple<>();
+        identificationInfoTuple.setElementOne(6500149124L);
+        identificationInfoTuple.setElementTwo("mamuka");
+
+        Tuple<String, Double> weightInfoTuple = new Tuple<>();
+        weightInfoTuple.setElementOne("saxeli gvari");
+        weightInfoTuple.setElementTwo(100.01);
+
+        List<Tuple> listOfTuples = new ArrayList<>();
+        listOfTuples.add(identificationInfoTuple);
+        listOfTuples.add(weightInfoTuple);
     }
 }

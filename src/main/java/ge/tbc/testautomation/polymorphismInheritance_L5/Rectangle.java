@@ -1,7 +1,7 @@
 package ge.tbc.testautomation.polymorphismInheritance_L5;
 
 public class Rectangle extends Shape{
-//public class Rectangle extends Shape implements Comparable{ // with comparable
+//public class Rectangle extends Shape implements Comparable<Rectangle>{ // with comparable
     protected double sideA;
     protected double sideB;
 
@@ -25,11 +25,10 @@ public class Rectangle extends Shape{
     }
 
 //    @Override
-//    public int compareTo(Object o) {
-//        Rectangle otherRectangle = (Rectangle) o;
-//        if (this.getPerimeter() < otherRectangle.getPerimeter()){
+//    public int compareTo(Rectangle o) {
+//        if (this.getPerimeter() < o.getPerimeter()){
 //            return -1;
-//        } else if (this.getPerimeter() > otherRectangle.getPerimeter()) {
+//        } else if (this.getPerimeter() > o.getPerimeter()) {
 //            return 1;
 //        }
 //        else {
